@@ -1,0 +1,49 @@
+GET http://localhost:4400/tweets
+
+###
+POST http://localhost:4400/tweets
+Content-Type: application/json
+
+{
+    "profilePic": "assets/profilepics/profile1.jpg",
+    "userName":  "unfrom server",
+    "twitterHandle": "@serverHandle",
+    "feed": "Here is a servertweet",
+    "comments": 100,
+    "retweets": 50,
+    "likes": 3
+}
+
+###
+PUT http://localhost:4400/edit-tweets/14
+Content-Type: application/json
+
+{
+    "feed": "editing post from server"
+}
+
+###
+GET http://localhost:4400/get-tweets/12
+
+
+
+###
+GET http://localhost:4400/load-tweet
+Content-Type: application/json
+
+{
+    "id": 2
+}
+
+###
+DELETE http://localhost:4400/delete-tweets/14
+
+###
+PUT http://localhost:4400/add-user
+Content-Type: application/json
+
+{
+    "profilepic": "assets/profilepics/profile1.jpg",
+    "twitterhandle": "serveruser",
+    "username": "Server User"
+}

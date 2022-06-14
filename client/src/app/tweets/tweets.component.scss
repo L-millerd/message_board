@@ -1,0 +1,40 @@
+.profilepic{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.container{
+  width: 50%;
+  margin: auto;
+}
+.tweetContainer{
+  padding-top:8px;
+  padding-bottom: 8px;
+  border-top: 1px solid #f1f1f1;
+}
+
+.indTweet{
+padding-top: 8px;
+padding-bottom: 8px;
+}
+
+.tweetContainer:hover{
+  background-color: #f1f1f1;
+}
+.unameContainer, .feed, .social{
+  font-size: 12px;
+  padding-left: 20px;
+}
+
+.social{
+  padding-top:5px;
+}
+
+//not working
+.svg path{
+  fill: black;
+}
+.svg:hover path {
+  fill: grey;
+}

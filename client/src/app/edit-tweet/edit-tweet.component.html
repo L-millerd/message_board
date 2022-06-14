@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Editing Tweet</label>
+    <textarea class="form-control" [(ngModel)]="tweet" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <button (click)="updateTweet()"class="btn btn-primary">Update</button>
+  <button (click)="deleteTweet()"class ="btn btn-primary">Delete</button>
+  <a [routerLink]="['/tweets']">return to twitter feed</a>
+  <div *ngIf="editSuccess" class="message mt-3" [style.display]="editMessage">Successfully Edited </div>
+  <div *ngIf="deleteSuccess" class="message mt-3" [style.display]="deleteMessage">Successfully Deleted</div>
+
+</div>
