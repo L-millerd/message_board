@@ -1,77 +1,67 @@
-<div class="container">
-<h4>Twitter</h4>
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Profile Pic</label>
-  <input type="text" [(ngModel)]="profilepic" class="form-control" id="exampleFormControlInput1" value="assets/profilepics/profile1.jpg">
-</div><div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">User Name</label>
-  <input type="text" [(ngModel)]="username" class="form-control" id="exampleFormControlInput1" placeholder="User Name">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Twitter Handle</label>
-  <input type="text" [(ngModel)]="twitterhandle" class="form-control" id="exampleFormControlInput1" placeholder="@yourhandle">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Your Tweet</label>
-  <textarea class="form-control" [(ngModel)]="feed" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-<!-- <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Comments</label>
-  <input type="text" [(ngModel)]="comments" class="form-control" id="exampleFormControlInput1" placeholder="number">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Retweets</label>
-  <input type="text" [(ngModel)]="retweets" class="form-control" id="exampleFormControlInput1" placeholder="number">
-  <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Likes</label>
-    <input type="text" [(ngModel)]="likes" class="form-control" id="exampleFormControlInput1" placeholder="number">
+<div class="mainContainer row">
+  <div class="profileContainer col-3">
+    <h4>Profile</h4>
+    <div class="profilepic"><img [src]="profilepic" class ="profilepic"></div>
+    <div class="handle">{{twitterhandle}}</div>
+    <div class="username">{{username}}</div>
+    <button (click)="logout()" [routerLink]="['/signup']" class="mt-3 btn btn-primary">Log Out</button>
   </div>
-</div> -->
+  <div class="postsContainer col-6">
+      <h4>Twitter</h4>
+      <div class="mb-3">
 
-<button class="btn btn-primary mb-5" (click)="addTweet()">Submit</button>
-
-<div class="row tweetContainer" *ngFor="let tweet of tweets">
-
-  <div class="col-2">
-    <img [src]="tweet.profilepic" class ="profilepic">
-  </div>
-  <div class="col-10">
-    <div class="unameContainer">
-      <span class="uname fw-bold">{{tweet.username}}</span>
-      <span class="handle"> {{ tweet.twitterhandle }}</span>
-      <span class="time"> 21h</span>
-    </div>
-    <div class="feed">
-      {{tweet.feed}}
-    </div>
-
-    <div class="social">
-      <div class="row">
-        <div class="col-3">{{tweet.comments}}</div>
-        <div class="col-3">
-          <retweet [totalRetweets] = "tweet.retweets"></retweet></div>
-        <div class="col-3">
-          <like [likes] = "tweet.likes" [isLiked]="tweet.liked"></like></div>
-        <div class="col-3">share</div>
+      <div class="mb-3">
+        <!-- <label for="exampleFormControlTextarea1" class="form-label">Start writing</label> -->
+        <textarea class="form-control" [(ngModel)]="feed" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
 
-      <div class="row">
-        <div class="col-3 edit">
-          <a [routerLink]="['/get-tweets', tweet.id]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  class="bi bi-pencil svg" viewBox="0 0 16 16">
-            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-          </svg>
-        </a>
-<!--
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  class="bi bi-trash3 svg" viewBox="0 0 16 16">
-            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-          </svg> -->
+
+      <button class="btn btn-primary mb-5" (click)="addTweet()">Post</button>
+
+      <div class="row tweetContainer" *ngFor="let tweet of tweets">
+
+        <div class="col-2">
+          <img [src]="tweet.profilepic" class ="profilepic">
         </div>
-        <div class="col-3 edit">
+        <div class="col-10">
+          <div class="unameContainer">
+            <span class="uname fw-bold">{{tweet.username}}</span>
+            <span class="handle"> {{ tweet.twitterhandle }}</span>
+            <span class="time"> 21h</span>
+          </div>
+          <div class="feed">
+            {{tweet.feed}}
+          </div>
+
+          <div class="social mt-3">
+            <div class="row">
+              <div class="col-3">{{tweet.comments}}</div>
+              <div class="col-3">
+                <retweet [totalRetweets] = "tweet.retweets"></retweet></div>
+              <div class="col-3">
+                <like [likes] = "tweet.likes" [isLiked]="tweet.liked"></like></div>
+              <div class="col-3">share</div>
+            </div>
+
+            <div class="row">
+              <!--added directive for edit - working -->
+              <div *ngIf = "tweet.twitterhandle == twitterhandle" class="col-3 edit"> Edit
+                <a [routerLink]="['/get-tweets', tweet.id]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  class="bi bi-pencil svg" viewBox="0 0 16 16">
+                  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg>
+              </a>
+      <!--
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  class="bi bi-trash3 svg" viewBox="0 0 16 16">
+                  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                </svg> -->
+              </div>
+              <div class="col-3 edit">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
+    <div class="empty col-3"></div>
 </div>

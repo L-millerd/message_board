@@ -103,12 +103,14 @@ server.delete('/delete-tweets/:id', (req, res) =>{
 })
 
 
-server.put('/add-user', (req, res) =>{
-    let query = "CALL `addUser`(?, ?, ?)";
+server.post('/add-user', (req, res) =>{
+    let query = "CALL `addUser`(?, ?, ?, ?, ?)";
     let profilePic = req.body.profilepic;
     let twitterHandle = req.body.twitterhandle;
     let userName = req.body.username;
-    db.query(query, [profilePic, twitterHandle, userName], (error, data)=>{
+    let password = req.body.password
+    let email = req.body.email
+    db.query(query, [profilePic, twitterHandle, userName, password, email], (error, data)=>{
         if(error){
             res.json({addUser: false, message: error})
         }
@@ -117,16 +119,17 @@ server.put('/add-user', (req, res) =>{
         }
     })
 })
-////TRYING SOMETHING
-// server.get('/load-tweet', (req, res) =>{
-//     let query = "CALL `getTweetById`(?)";
-//     let id = req.body.id;
-//     db.query(query, id, (error, getTweet)=>{
-//         if(error){
-//             res.json({getTweet: false, message: error});
-//         }
-//         else{
-//             res.json({getTweet: getTweet[0][0], message: "Recieved Tweet"})
-//         }
-//     })
-// })
+
+server.post('/login', (req, res)=>{
+    let query = "CALL `login`(?, ?)";
+    let email = req.body.email;
+    let password = req.body.password;
+    db.query(query, [email, password], (error, data)=>{
+        if(error){
+            res.json({loggedIn: false, message: error})
+        }
+        else{
+            res.json({loggedIn: true, data, message:"you have logged in"})
+        }
+    })
+})

@@ -5,7 +5,7 @@
   </div>
   <button (click)="updateTweet()"class="btn btn-primary">Update</button>
   <button (click)="deleteTweet()"class ="btn btn-primary">Delete</button>
-  <a [routerLink]="['/tweets']">return to twitter feed</a>
+  <a [routerLink]="['../..']">return to twitter feed</a>
   <div *ngIf="editSuccess" class="message mt-3" [style.display]="editMessage">Successfully Edited </div>
   <div *ngIf="deleteSuccess" class="message mt-3" [style.display]="deleteMessage">Successfully Deleted</div>
 

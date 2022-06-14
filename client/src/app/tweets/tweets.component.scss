@@ -1,13 +1,28 @@
+.profileContainer{
+  margin-left: 40px;
+  text-align: center;
+
+}
+
+.mainContainer{
+  margin-top: 20px;
+}
+.postsContainer{
+  border-right: 1px solid #f1f1f1;
+  border-left: 1px solid #f1f1f1;
+
+}
 .profilepic{
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  margin: 0 auto;
 }
 
-.container{
-  width: 50%;
-  margin: auto;
-}
+// .container{
+//   width: 50%;
+//   margin: auto;
+// }
 .tweetContainer{
   padding-top:8px;
   padding-bottom: 8px;

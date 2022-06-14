@@ -45,5 +45,24 @@ Content-Type: application/json
 {
     "profilepic": "assets/profilepics/profile1.jpg",
     "twitterhandle": "serveruser",
-    "username": "Server User"
+    "username": "Server User",
+    "password": "1234",
+    "email": "server@server.com"
+}
+
+###
+GET http://localhost:4400/user-info
+Content-Type: application/application/json
+
+{
+    "userID": 2,
+}
+
+###
+POST http://localhost:4400/login
+Content-Type: application/json
+
+{
+    "email": "sarah@gmail.com",
+    "password": "1234"
 }

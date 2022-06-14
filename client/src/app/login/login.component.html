@@ -1,0 +1,14 @@
+<div class="container">
+  <h4>Twitter</h4>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email</label>
+    <input type="email" [(ngModel)]="email" class="form-control" >
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Password</label>
+    <input type="password" [(ngModel)]="password" class="form-control" >
+  </div>
+
+  <a routerLink='..'><button (click)="login()" class="btn btn-primary">Log In</button></a>
+  <!-- <div *ngIf = "addedUser" class="mt-5">Welcome {{username}}! <a routerLink='..'>Go to message board</a></div> -->
+
